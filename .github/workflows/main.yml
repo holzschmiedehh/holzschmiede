@@ -53,10 +53,4 @@ jobs:
           SFTP_PORT: ${{ secrets.SFTP_PORT }}
           SFTP_USERNAME: ${{ secrets.SFTP_USERNAME }}
           SFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
-        #uses: SamKirkland/FTP-Deploy-Action@3.1.1
-        #with:
-        #  ftp-server: sftp://${{ secrets.SFTP_SITE }}
-        #  ftp-username: ${{ secrets.SFTP_USERNAME }}
-        #  ftp-password: ${{ secrets.SFTP_PASSWORD }}
-        #  local-dir: ./build/
-        #  git-ftp-args: --insecure
+          
