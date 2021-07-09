@@ -1,0 +1,41 @@
+{{> header_product 
+    title=name
+    description=meta_description
+    keywords=meta_keywords 
+    image="first picture"
+    image_alt="image_alt"}}
+
+    <!-- 
+        DER CONTENTBEREICH
+    -->    
+    <main role="main" itemscope itemprop="mainContentOfPage">  
+        
+        <section itemscope itemtype="https://schema.org/IndividualProduct" class="page-section">
+            <div class="row column text-center">
+                <h1 itemprop="name" class="tagline bb">{{name}}</h1>
+            </div>
+            <div class="row column">
+                <div class="h1-divider"></div>
+            </div>            
+            <div class="row column">
+                <p itemprop="description">{{description}}</p>
+            </div>                    
+            <div class="row large-up-2 push-down featured">
+                {{#each pictures}}
+                    <div class="column column-block">
+                        <article>
+                            <img itemprop="image" src="/assets/{{this}}"
+                                alt="description" title="description" class="thumbnail" />                                            
+                        </article>
+                    </div>
+                {{/each}}
+            </div>
+            <div class="row column text-center">
+                    <a href="/wohnskulpturen.html" class="button warning large products-button" title="Zurück zur Übersicht über alle Wohnskulpturen">Zurück zur Übersicht</a>
+            </div>                
+        </section>
+
+    </main>
+
+{{> footer }}
+

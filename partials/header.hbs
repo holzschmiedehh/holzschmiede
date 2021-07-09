@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <!-- change from title which is taken from the src/xxx.html file and use data from contentful so it can be edited on contentful -->
+        <title>{{ title }}</title>
+        <!-- change from description which is taken from the src/xxx.html file and use data from contentful so it can be edited on contentful -->
+        <meta name="description" content="{{ description }}">
+        <meta name="keywords" content="{{ keywords }}">
+
+        {{#if noIndex}}
+            <meta name="robots" content="noindex,follow" />
+        {{/if}}
+
+        <!-- favicon -->
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+        <link rel="manifest" href="/assets/favicon/site.webmanifest">
+        <link rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg" color="#e09402">
+        <link rel="shortcut icon" href="/assets/favicon/favicon.ico">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="msapplication-config" content="/assets/favicon/browserconfig.xml">
+        <meta name="theme-color" content="#e09402">
+
+
+        <!-- <meta name="google-site-verification" content="ADYYP5KNRwgg8_fz8myOr7qxWeUKc2mI_csyzUDMBd4" /> -->
+
+        <link rel="stylesheet" href="/{{ fingerprint.[assets/css/styles.css] }}">
+        
+    </head>
+
+
+    <body>
+        <div class="swrapper">
+            <!-- 
+                DER HEADER 
+            -->    
+            <header role="banner" itemscope itemtype="http://schema.org/WPHeader">
+                <div id="logo">
+                    <a href="/index.html" title="Die Startseite der Holzschmiede Hamburg aufrufen">
+                        <img src="/assets/images/logo.png" alt="Holzschmiede Hamburg" title="Holzschmiede Hamburg">
+                    </a>
+                </div>
+            </header>
+        
+
+            <!--
+                DIE Navigation
+            -->
+            <nav role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+                <ul>
+                    <li>
+                        <a itemprop="url" href="/index.html" {{#isActive filename 'index.html' }}{{/isActive}} title="Die Startseite der Holzschmiede Hamburg aufrufen"> 
+                            <span itemprop="name">Startseite</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a itemprop="url" href="/wohnskulpturen.html" {{#isActive filename 'wohnskulpturen.html' }}{{/isActive}} title="Eine Übersicht über alle Wohnskulpturen der Holzschmiede Hamburg aufrufen">
+                            <span itemprop="name">Skulpturen</span>
+                        </a>    
+                    </li>
+                    <li>
+                        <a itemprop="url" href="/kontakt.html" {{#isActive filename 'kontakt.html' }}{{/isActive}} title="Kontaktieren Sie die Holzschmiede Hamburg">
+                            <span itemprop="name">Kontakt</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>    

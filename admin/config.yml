@@ -1,0 +1,168 @@
+backend:
+  name: github
+  repo: holzschmiedehh/www # Path to your Github repository
+  branch: main # Branch to update
+  base_url: https://holzschmiede-hamburg.de
+  auth_endpoint: /auth/public/auth
+
+local_backend: true
+media_folder: src/uploads/ # probably needs to be changed in metalsmith as well
+public_folder: images/
+show_preview_links: false
+
+slug:
+  encoding: "ascii"          # Sanitize filenames (slugs) according to RFC3986. The only allowed characters are (0-9, a-z, A-Z, _, -, ~).
+  clean_accents: true        # Remove diacritics from slug characters before sanitizing.
+  sanitize_replacement: "-"  # used for substitution of unsafe characters
+
+collections: # A list of collections the CMS should be able to edit
+  - label: "Konfiguration"
+    name: "site_config"
+    description: "Enthält für die gesamte Seite gültige Firmen-Informationen wie z.B die Umsatzsteuer-Identifikationsnummer"
+    delete: false
+    extension: json
+    format: json
+    editor:
+      preview: false
+    files:
+      - label: "Firmen Informationen"
+        name: "company_info"
+        file: "data/settings.json"
+        fields:
+          - {label: "Firmenname", name: "company_name", widget: "string"}
+          - {label: "Gründungsjahr", name: "company_founding_year", widget: "number"}
+          - {label: "Inhaber", name: "company_owner", widget: "string"}
+          - {label: "Berufsbezeichnung", name: "company_job_title", widget: "string"}
+          - {label: "Umsatzsteuer-Identifikationsnnummer (USt. - IdNr.)", name: "company_vat_number", widget: "string"}
+          - {label: "Stadt", name: "company_city", widget: "string"}
+          - {label: "Straße", name: "company_street", widget: "string"}
+          - {label: "Postleitzahl", name: "company_zip", widget: "number"}
+          - {label: "Telefonnummer", name: "company_phone", widget: "string"}
+          - {label: "Email", name: "company_mail", widget: "string"}
+          - {label: "Website", name: "company_website", widget: "string", hint: 'ACHTUNG! Nur ändern wenn die Domain gewechselt wurde (unwahrscheinlich!), da unter anderem die für Suchmaschinen wichtige sitemap.xml und robots.txt davon abhängen.'}
+
+                    
+  - label: "Seiten"    
+    name: "pages"
+    description: "Enthält alle auf der Seite öffentlich erreichbare Seiten, um die dort hinterlegten Informationen zu bearbeiten."
+    slug: "{{slug}}" 
+    delete: false
+    extension: md
+    format: yaml-frontmatter
+    editor:
+      preview: false   
+    files:      
+    - label: "Startseite"        
+      name: "home"        
+      file: "src/index.md"        
+      fields:          
+      - {label: Titel, name: title, widget: "string", hint: "Dieses Feld wird auch für die erste Überschrift auf der Startseite genutzt damit die Benutzer sowohl auf der Übersichtsseite der Suchmaschine (google, yahoo, bing etc.) als auch auf der Startseite der Holzschmiede den gleichen Titel lesen. Der Titel sollte maximal 78 Zeichen enthalten, und zum klicken animieren."}          
+      - {label: Suchmaschinen Beschreibung, name: meta_description, widget: "text", hint : "Soll den Inhalt der Seite exakt beschreiben, spanned und flüssig zu lesen sein und zwischen 150 und 160 Zeichen enthalten."}          
+      - label: "Schlüsselwörter"
+        name: "meta_keywords"
+        hint: "Meta Schlüsselwörter haben bei google und anderen Suchmaschinen kaum noch Bedeutung. Nicht viel Zeit investieren. Maximal 5-7 Schlüsselwörter eintragen."
+        widget: "list"
+        collapsed: true
+        max: 7
+        field: {label: "Schlüsselwort", name: "keyword", widget: "string"}
+      - {label: "Intro text", name: intro, widget: "text"}     
+      - {label: "Teaser Header", name: teaser_header, widget: "text"} 
+      - {label: "Teaser", name: "teaser", widget: "text"}
+      - label: "Wohnskulpturen"
+        name: "linked_sculptures"
+        widget: "relation"
+        collection: "sculptures"
+        search_fields: ['name']
+        value_field: "{{slug}}"
+        multiple: true
+        min: 4
+        max: 4  
+      - {label: "Button Text", name: button_text, widget: "string"}  
+      - {label: "Extra Header", name: extra_header, widget: "string"}   
+      - {label: "Extra text", name: extra_text, widget: "markdown"}
+      # not visible to the user but will end up in the frontmatter
+      - {label: "Layout", name: "layout", widget: "hidden", default: "index.hbs"}  
+    
+    - label: "Impressum"        
+      name: "imprint"
+      file: "src/impressum.md"        
+      fields:          
+      - {label: Titel, name: title, widget: "string", hint: "Dieses Feld wird auch für die erste Überschrift auf der Startseite genutzt damit die Benutzer sowohl auf der Übersichtsseite der Suchmaschine (google, yahoo, bing etc.) als auch auf der Startseite der Holzschmiede den gleichen Titel lesen. Der Titel sollte maximal 78 Zeichen enthalten, und zum klicken animieren."}          
+      - {label: Suchmaschinen Beschreibung, name: meta_description, widget: "text", hint : "Soll den Inhalt der Seite exakt beschreiben, spanned und flüssig zu lesen sein und zwischen 150 und 160 Zeichen enthalten."}          
+      - label: "Schlüsselwörter"
+        name: "meta_keywords"
+        hint: "Meta Schlüsselwörter haben bei google und anderen Suchmaschinen kaum noch Bedeutung. Nicht viel Zeit investieren. Maximal 5-7 Schlüsselwörter eintragen."
+        widget: "list"
+        collapsed: true
+        max: 7
+        field: {label: "Schlüsselwort", name: "keyword", widget: "string"} 
+      - {label: Haftung, name: disclaimer, widget: "markdown"} 
+      - {label: Datenschutz, name: data_safety, widget: "markdown"}
+        # not visible to the user but will end up in the frontmatter
+      - {label: "Layout", name: "layout", widget: "hidden", default: "impressum.hbs"}      
+
+    - label: "Kontakt"        
+      name: "contact"
+      file: "src/kontakt.md"        
+      fields:          
+      - {label: Titel, name: title, widget: "string", hint: "Dieses Feld wird auch für die erste Überschrift auf der Startseite genutzt damit die Benutzer sowohl auf der Übersichtsseite der Suchmaschine (google, yahoo, bing etc.) als auch auf der Startseite der Holzschmiede den gleichen Titel lesen. Der Titel sollte maximal 78 Zeichen enthalten, und zum klicken animieren."}          
+      - {label: Suchmaschinen Beschreibung, name: meta_description, widget: "text", hint : "Soll den Inhalt der Seite exakt beschreiben, spanned und flüssig zu lesen sein und zwischen 150 und 160 Zeichen enthalten."}          
+      - label: "Schlüsselwörter"
+        name: "meta_keywords"
+        hint: "Meta Schlüsselwörter haben bei google und anderen Suchmaschinen kaum noch Bedeutung. Nicht viel Zeit investieren. Maximal 5-7 Schlüsselwörter eintragen."
+        widget: "list"
+        collapsed: true
+        max: 7
+        field: {label: "Schlüsselwort", name: "keyword", widget: "string"} 
+      - {label: Intro, name: intro, widget: "markdown"} 
+      - {label: Outro, name: outro, widget: "markdown"}
+        # not visible to the user but will end up in the frontmatter
+      - {label: "Layout", name: "layout", widget: "hidden", default: "kontakt.hbs"}             
+
+    - label: "Wohnskulpturen (Übersicht)"        
+      name: "sculptures_overview"
+      file: "src/wohnskulpturen.md"        
+      fields:          
+      - {label: Titel, name: title, widget: "string", hint: "Dieses Feld wird auch für die erste Überschrift auf der Startseite genutzt damit die Benutzer sowohl auf der Übersichtsseite der Suchmaschine (google, yahoo, bing etc.) als auch auf der Startseite der Holzschmiede den gleichen Titel lesen. Der Titel sollte maximal 78 Zeichen enthalten, und zum klicken animieren."}          
+      - {label: Suchmaschinen Beschreibung, name: meta_description, widget: "text", hint : "Soll den Inhalt der Seite exakt beschreiben, spanned und flüssig zu lesen sein und zwischen 150 und 160 Zeichen enthalten."}          
+      - label: "Schlüsselwörter"
+        name: "meta_keywords"
+        hint: "Meta Schlüsselwörter haben bei google und anderen Suchmaschinen kaum noch Bedeutung. Nicht viel Zeit investieren. Maximal 5-7 Schlüsselwörter eintragen."
+        widget: "list"
+        collapsed: true
+        max: 7
+        field: {label: "Schlüsselwort", name: "keyword", widget: "string"} 
+        # not visible to the user but will end up in the frontmatter
+      - {label: "Layout", name: "layout", widget: "hidden", default: "wohnskulpturen.hbs"}    
+
+  - label: "Wohnskulpturen"
+    name: "sculptures"
+    description: "Erlaubt es bereits erstellte Wohnskulpturen zu löschen und neue anzulegen."
+    folder: "src/wohnskulpturen"
+    identifier_field: name # normally a title field is required for folder collections (which is used for filenames), this changes it to the name field
+    create: true
+    delete: true
+    extension: md
+    format: yaml-frontmatter
+    editor:
+      preview: false
+    slug: "{{slug}}" # Filename template, in this case slug is: name.md
+    fields:
+      - {label: "Name", name: "name", widget: "string"}
+      # Maybe automatically just take the first 160 words from description...
+      - {label: "Suchmaschinen Beschreibung", name: "meta_description", widget: "string"}
+      - label: "Schlüsselwörter"
+        name: "meta_keywords"
+        hint: "Meta Schlüsselwörter haben bei google und anderen Suchmaschinen kaum noch Bedeutung. Nicht viel Zeit investieren. Maximal 5-7 Schlüsselwörter eintragen."
+        widget: "list"
+        collapsed: true
+        max: 7
+        field: {label: "Schlüsselwort", name: "keyword", widget: "string"}
+      - {label: "Beschreibung", name: "description", widget: "text"}
+      - label: "Produktfotos"
+        name: "pictures"
+        widget: "list"
+        field: {label: "Foto", name: "picture", widget: "image", min: 1}
+        # not visible to the user but will end up in the frontmatter
+      - {label: "Layout", name: "layout", widget: "hidden", default: "wohnskulptur.hbs"}  
+

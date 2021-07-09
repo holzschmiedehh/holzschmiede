@@ -1,0 +1,180 @@
+
+#
+# gzip content so we don't transfer as much data
+#
+mod_gzip_on Yes
+
+#
+# disable the server signature (e.g. Server: Apache/2.4.25 (Unix)) because this provides attackers with more info
+#
+ServerSignature Off
+
+#
+# block user agent "libwww-perl" which is often used by malicious software. they can easily change the user agent but at least dumb people will be stopped
+#
+SetEnvIfNoCase User-Agent "^libwww-perl*" block_bad_bots
+Deny from env=block_bad_bots
+
+#
+# important security headers (removed nonce's for now because of errors with chrome... the new IE...)
+#
+# removed Header set X-Frame-Options "DENY" and Header set Referrer-Policy "same-origin" temporarily to see if page views goes up
+#
+<IfModule mod_headers.c>
+    #Header set Strict-Transport-Security "max-age=31536000; includeSubDomains;"
+    Header set Content-Security-Policy: "default-src *  data: blob: filesystem: about: ws: wss: 'unsafe-inline' 'unsafe-eval' 'unsafe-dynamic'; script-src * data: blob: 'unsafe-inline' 'unsafe-eval'; connect-src * data: blob: 'unsafe-inline'; img-src * data: blob: 'unsafe-inline'; frame-src * data: blob: ; style-src * data: blob: 'unsafe-inline'; font-src * data: blob: 'unsafe-inline'; frame-ancestors * data: blob: 'unsafe-inline';"
+    #Header set X-Content-Type-Options "nosniff"
+    #Header set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+#
+# tell the clients to cache the data for longer preiods of time. fingerprinting allows us to break the cache anyway.
+#
+<IfModule mod_expires.c>
+    FileETag MTime Size
+
+    ExpiresActive On
+    #ExpiresByType text/cache-manifest      "access plus 0 seconds"
+    #ExpiresByType text/html                "access plus 0 seconds"
+    #ExpiresByType text/xml                 "access plus 0 seconds"
+    #ExpiresByType application/xml          "access plus 0 seconds"
+    #ExpiresByType application/json         "access plus 0 seconds"    
+    ExpiresByType text/css                 "access plus 1 months"
+    ExpiresByType application/javascript   "access plus 1 months"
+    ExpiresByType application/x-javascript "access plus 1 months"
+    ExpiresByType image/gif                "access plus 1 months"
+    ExpiresByType image/jpeg               "access plus 1 months"
+    ExpiresByType image/png                "access plus 1 months"
+    ExpiresByType image/x-icon             "access plus 1 months"    
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    #
+    # force http to https and www to non-www
+    #
+    RewriteCond %{HTTPS} off          [OR]
+    RewriteCond %{HTTP_HOST} ^www\.   [NC]
+    RewriteRule ^ https://holzschmiede-hamburg.de%{REQUEST_URI} [R=301,L,NE]
+
+    #
+    # rewrite all requests for / to be served from /holzschmiede instead of /
+    #
+    RewriteCond %{REQUEST_URI} !^/holzschmiede/
+    RewriteRule ^(.*)$ /holzschmiede/$1
+
+    #
+    # custom 404 page
+    #
+    ErrorDocument 404 /404.html
+
+    #
+    # redirect produkte directory to wohnskulpturen
+    #
+    RewriteRule ^produkte/(.*)$ /wohnskulpturen/$1 [R=301,NC,L]
+
+    #
+    # redirect all google search results to the new page so no page ranking is lost
+    #
+    Redirect 301 /produkte.html                                 https://holzschmiede-hamburg.de/wohnskulpturen.html
+    Redirect 301 /HH/Schwingstuhl.html                          https://holzschmiede-hamburg.de/wohnskulpturen/schwingstuhl.html
+    Redirect 301 /HH/Wrestler.html                              https://holzschmiede-hamburg.de/wohnskulpturen/die-wrestler.html
+    Redirect 301 /HH/Dreirat.html                               https://holzschmiede-hamburg.de/wohnskulpturen/dreirat.html
+    Redirect 301 /HH/Willkommen.html                            https://holzschmiede-hamburg.de
+    Redirect 301 /firma.html                                    https://holzschmiede-hamburg.de
+    Redirect 301 /HH/Mooreiche.html                             https://holzschmiede-hamburg.de/wohnskulpturen/mooreiche.html
+    Redirect 301 /HH/Lampen.html                                https://holzschmiede-hamburg.de/wohnskulpturen/lampen.html
+    Redirect 301 /HH/Bauchtanz.html                             https://holzschmiede-hamburg.de/wohnskulpturen/der-bauchtanz.html
+    Redirect 301 /HH/Nusstopf.html                              https://holzschmiede-hamburg.de/wohnskulpturen/nusstopf.html
+    Redirect 301 /HH/Puzzletisch.html                           https://holzschmiede-hamburg.de/wohnskulpturen/puzzletisch.html
+    Redirect 301 /HH/Tanz_der_Weiden.html                       https://holzschmiede-hamburg.de/wohnskulpturen/tanz-der-weiden.html
+    Redirect 301 /HH/Sitzschwebe.html                           https://holzschmiede-hamburg.de/wohnskulpturen/liegeschwebe.html
+    Redirect 301 /HH/Schaukelstuhl.html                         https://holzschmiede-hamburg.de/wohnskulpturen/schaukelstuhl.html
+    Redirect 301 /HH/Linduo.html                                https://holzschmiede-hamburg.de/wohnskulpturen/linduo.html
+    Redirect 301 /HH/Rundtisch.html                             https://holzschmiede-hamburg.de/wohnskulpturen/rundtische.html
+    Redirect 301 /HH/Garderobenstander.html                     https://holzschmiede-hamburg.de/wohnskulpturen/garderobenstaender.html
+    Redirect 301 /HH/Gemeinsam.html                             https://holzschmiede-hamburg.de/wohnskulpturen/gemeinsam.html
+    Redirect 301 /HH/Vielseiter.html                            https://holzschmiede-hamburg.de/wohnskulpturen/vielseiter.html
+    Redirect 301 /HH/Birkenfu.html                              https://holzschmiede-hamburg.de/wohnskulpturen/birkenfuss.html
+    Redirect 301 /Holzschmiede-Hamburg/Die_Holzschmiede.html    https://holzschmiede-hamburg.de
+    Redirect 301 /Holzschmiede-Hamburg/Dreirat.html             https://holzschmiede-hamburg.de/wohnskulpturen/dreirat.html
+    Redirect 301 /Holzschmiede-Hamburg/Schwingstuhl.html        https://holzschmiede-hamburg.de/wohnskulpturen/schwingstuhl.html
+    Redirect 301 /Holzschmiede-Hamburg/Sitzschwebe.html         https://holzschmiede-hamburg.de/wohnskulpturen/liegeschwebe.html
+    Redirect 301 /Holzschmiede-Hamburg/Puzzletisch.html         https://holzschmiede-hamburg.de/wohnskulpturen/puzzletisch.html
+    Redirect 301 /Holzschmiede-Hamburg/Wrestler.html            https://holzschmiede-hamburg.de/wohnskulpturen/die-wrestler.html
+    Redirect 301 /Holzschmiede-Hamburg/Walschlund.html          https://holzschmiede-hamburg.de/wohnskulpturen/walschlund.html
+    Redirect 301 /Holzschmiede-Hamburg/Schaukelstuhl.html       https://holzschmiede-hamburg.de/wohnskulpturen/schaukelstuhl.html
+    Redirect 301 /Holzschmiede-Hamburg/Bauchtanz.html           https://holzschmiede-hamburg.de/wohnskulpturen/der-bauchtanz.html
+    Redirect 301 /Holzschmiede-Hamburg/Schaukelliege.html       https://holzschmiede-hamburg.de/wohnskulpturen/schaukelliege.html
+    Redirect 301 /Holzschmiede-Hamburg/Wengetisch.html          https://holzschmiede-hamburg.de/wohnskulpturen/wengetisch.html
+    Redirect 301 /Holzschmiede-Hamburg/Gemeinsam.html           https://holzschmiede-hamburg.de/wohnskulpturen/gemeinsam.html
+    Redirect 301 /Holzschmiede-Hamburg/Linduo.html              https://holzschmiede-hamburg.de/wohnskulpturen/linduo.html
+    Redirect 301 /Holzschmiede-Hamburg/Birkenfu.html            https://holzschmiede-hamburg.de/wohnskulpturen/birkenfuss.html
+    Redirect 301 /Holzschmiede-Hamburg/Nussschale.html          https://holzschmiede-hamburg.de/wohnskulpturen/nussschale.html
+    Redirect 301 /Holzschmiede-Hamburg/Rundtisch.html           https://holzschmiede-hamburg.de/wohnskulpturen/rundtische.html
+    Redirect 301 /Holzschmiede-Hamburg/Nusstopf.html            https://holzschmiede-hamburg.de/wohnskulpturen/nusstopf.html
+    Redirect 301 /Holzschmiede-Hamburg/Schwingschale.html       https://holzschmiede-hamburg.de/wohnskulpturen/schwingschale.html
+    Redirect 301 /HH/Zahnhocker-1.html                          https://holzschmiede-hamburg.de/wohnskulpturen/zahnhocker.html
+    Redirect 301 /HH/Zahnhocker-2.html                          https://holzschmiede-hamburg.de/wohnskulpturen/zahnhocker.html
+    Redirect 301 /Holzschmiede-Hamburg/Zahnhocker-2.html        https://holzschmiede-hamburg.de/wohnskulpturen/zahnhocker.html
+    Redirect 301 /Holzschmiede-Hamburg/Zahnhocker-1.html        https://holzschmiede-hamburg.de/wohnskulpturen/zahnhocker.html
+    Redirect 301 /HH/CD-Stander.html                            https://holzschmiede-hamburg.de/wohnskulpturen/cd-staender.html
+    Redirect 301 /Holzschmiede-Hamburg/Garderobenstander.html   https://holzschmiede-hamburg.de/wohnskulpturen/garderobenstaender.html
+    Redirect 301 /Holzschmiede-Hamburg/Tanz_der_Weiden.html     https://holzschmiede-hamburg.de/wohnskulpturen/tanz-der-weiden.html
+    Redirect 301 /Holzschmiede-Hamburg/Lampen.html              https://holzschmiede-hamburg.de/wohnskulpturen/lampen.html
+    Redirect 301 /Holzschmiede-Hamburg/Vielseiter.html          https://holzschmiede-hamburg.de/wohnskulpturen/vielseiter.html
+
+    #
+    # redirect the images that can be found with googles image search
+    #
+    Redirect 301 "/Holzschmiede-Hamburg/Lampen_files/Katalog 141.jpg"          "https://images.ctfassets.net/nfxa164xfzq9/YgCGtCcniCU8MI6yqMeou/4d8b3e157cbfb56dd49f35a8dab78baf/frontpage_light.jpg"
+    Redirect 301 "/Holzschmiede-Hamburg/Schaukelstuhl_files/IMG_1306.jpg"      "https://images.ctfassets.net/nfxa164xfzq9/6bzCJzjrqMYSs6aA0qSMgW/e86bd2f46ac468c7edafc75809a8c601/schaukelstuhl_1.jpg"
+    Redirect 301 "/HH/Nusstopf_files/IMG_0124.jpg"                             "https://images.ctfassets.net/nfxa164xfzq9/5YafFS1b5mC2CSkMkY4kYs/1efb306cd9c951f2bf169c035c6bac0d/nusstopf_1.jpeg"
+    Redirect 301 "/Holzschmiede-Hamburg/Zahnhocker-1_files/IMG_0142.jpg"       "https://images.ctfassets.net/nfxa164xfzq9/7loOwa7PGMggSSwAmuuOcO/18ac72199267f9e405bf303bd5d68788/frontpage_tooth.jpg"
+    Redirect 301 "/HH/Schaukelstuhl_files/IMG_1310.jpg"                        "https://images.ctfassets.net/nfxa164xfzq9/4cEzRmQvtmSAEWI4MyASOU/3cb8893af6dd345ac65d9032f0d6ee43/schaukelstuhl_3.jpg"
+    Redirect 301 "/Holzschmiede-Hamburg/Birkenfu_files/Katalog 115.jpg"        "https://images.ctfassets.net/nfxa164xfzq9/3YZt3ZEkaIIuK6ECiM8kC8/bc27cb17de6be0877984d7e649148af0/Katalog_115.jpg"
+    Redirect 301 "/Holzschmiede-Hamburg/Linduo_files/Katalog 062.jpg"          "https://images.ctfassets.net/nfxa164xfzq9/4U80Ri80C4SOAsYGsSW0yg/da31238d37a37781fe2cec23c1f4cbff/02.05.2014_-_55_von_186.jpg"
+    Redirect 301 "/Holzschmiede-Hamburg/Gemeinsam_files/Katalog 081.jpg"       "https://images.ctfassets.net/nfxa164xfzq9/6AftzEJGJqMaE8Us8sWuWu/eab36516c9262fd28e0e89d84072ea68/Katalog_081.jpg"
+    Redirect 301 "/Holzschmiede-Hamburg/Linduo_files/Katalog 061.jpg"          "https://images.ctfassets.net/nfxa164xfzq9/1omWG5GoAgeie6K2yGm8K6/c0a6e80a7249151ad0011680a557f2e3/Katalog_061.jpg"              
+    Redirect 301 "/Holzschmiede-Hamburg/Nusstopf_files/IMG_0975.jpg"           "https://images.ctfassets.net/nfxa164xfzq9/27nXrYYSiwEemqaYQuW4oe/01ff3cb110466f36da0124487ca23701/frontpage_table.jpg"
+    Redirect 301 "/Holzschmiede-Hamburg/Vielseiter_files/Katalog 072.jpg"      "https://images.ctfassets.net/nfxa164xfzq9/43sDt7X2MMoEygg0qUqkO/b8a00cb6ffeb073485ad29d338e1bf85/Katalog_072.jpg"
+    Redirect 301 "/Holzschmiede-Hamburg/Walschlund_files/Katalog102.jpg"       "https://images.ctfassets.net/nfxa164xfzq9/75Nnl3MJSoioEqKeQYKEke/7d612d819bcd54f2130b1f3a29cc4e0d/Katalog102.jpg"
+    Redirect 301 "/Holzschmiede-Hamburg/Lampen_files/Katalog 140.jpg"          "https://images.ctfassets.net/nfxa164xfzq9/rbnYk8b1p62Qmc22MIw66/886db8718c7096429954bf06024a61aa/Katalog_140.jpg"
+    Redirect 301 "/Holzschmiede-Hamburg/Rundtisch_files/Katalog 123.jpg"       "https://images.ctfassets.net/nfxa164xfzq9/4nbmvOFMBOYeUSWemauOUA/f9e5b613618f0a614ca816a7f6e1ce20/Katalog_125.jpg"
+    Redirect 301 "/Holzschmiede-Hamburg/Schaukelliege_files/IMG_0952.jpg"      "https://images.ctfassets.net/nfxa164xfzq9/4GN38s0m3miKigqwcKG0G2/348627a15c4054ae023abf2b84b673c4/schaukelliege_1.jpg"
+    Redirect 301 "/Holzschmiede-Hamburg/Birkenfu_files/Katalog 114.jpg"        "https://images.ctfassets.net/nfxa164xfzq9/6hDyPpgpHOGcam4wg4yQu8/bc27cb17de6be0877984d7e649148af0/Katalog_114.jpg"
+    Redirect 301 "/Holzschmiede-Hamburg/Rundtisch_files/Katalog 120.jpg"       "https://images.ctfassets.net/nfxa164xfzq9/1FqC69U9QgQYUwYQ4Ig86Y/ff97c5a69d0b730b13cbe91eb8d8e0f5/Katalog_120.jpg"
+    Redirect 301 "/Holzschmiede-Hamburg/Birkenfu_files/Katalog 112.jpg"        "https://images.ctfassets.net/nfxa164xfzq9/6wwoPPXWG4gQAeo84Ki4QM/73764da39545272238fe85e5812b59ae/Katalog_112.jpg"
+    Redirect 301 "/Holzschmiede-Hamburg/Linduo_files/Katalog 060.jpg"          "https://images.ctfassets.net/nfxa164xfzq9/15BMbvGy2QK2ygEiU8q8IO/ae6904431929881672cc336ba0cf070f/02.05.2014_-_54_von_186.jpg"
+    Redirect 301 "/Holzschmiede-Hamburg/Wrestler_files/Katalog 028.jpg"        "https://images.ctfassets.net/nfxa164xfzq9/5EkgLdIf5ewAIqsAOoWwm6/f1fcc8800e95c6d1bd0c0a61e5c51a0b/Katalog_028.jpg"
+    Redirect 301 "/Holzschmiede-Hamburg/Rundtisch_files/Katalog 124.jpg"       "https://images.ctfassets.net/nfxa164xfzq9/1zyU5UE2CQwu8iuEeyEWOW/c5b5c75ea1f6ae51d41550f0f493c3b6/Katalog_124.jpg"
+    Redirect 301 "/Holzschmiede-Hamburg/Linduo_files/Katalog 068.jpg"          "https://images.ctfassets.net/nfxa164xfzq9/132WTZrVR0AYKm2yAOAwQW/85b97e790865bea724f0eae30740badd/Katalog_068.jpg"
+    Redirect 301 "/Holzschmiede-Hamburg/Wrestler_files/IMG_1319.jpg"           "https://images.ctfassets.net/nfxa164xfzq9/2f2b3q7she6AUCCuQsgkUQ/75c0a4991d5f1003c54cabe98678ff3b/wrestler.jpeg"
+    Redirect 301 "/Holzschmiede-Hamburg/Nusstopf_files/IMG_0977.jpg"           "https://images.ctfassets.net/nfxa164xfzq9/zmA5JeHDZQCQU4YyW0uEg/754ecbdfe9b6edfc3b1c4e611d6ff6cf/nusstopf_2.jpg"
+    Redirect 301 "/Holzschmiede-Hamburg/Vielseiter_files/Katalog 071.jpg"      "https://images.ctfassets.net/nfxa164xfzq9/4zYRyu3lGwmK68EK4OmCCa/f860d159ee564f667b5ce070b3acb3b4/Katalog_071.jpg"
+    Redirect 301 "/HH/CD-Stander_files/IMG_0096.jpg"                           "https://images.ctfassets.net/nfxa164xfzq9/2UrzTBMUhi4Ye4mMs248gU/812efdc0c8a20fd415dfe4a01a221984/cd_staender_1.jpg"
+    Redirect 301 "/Holzschmiede-Hamburg/Birkenfu_files/Katalog 113.jpg"        "https://images.ctfassets.net/nfxa164xfzq9/5ARXIaKtj20QKyMGq26A0C/2fd7539d0f864477a26291475ce41756/Katalog_113.jpg"
+    Redirect 301 "/Holzschmiede-Hamburg/Gemeinsam_files/Katalog 079.jpg"       "https://images.ctfassets.net/nfxa164xfzq9/sckf9I9L5QgckKiw2QWiW/eb99c5b90b50869b253dab1e15ef6e5f/Katalog_079.jpg"
+    Redirect 301 "/Holzschmiede-Hamburg/Bauchtanz_files/IMG_0159.jpg"          "https://images.ctfassets.net/nfxa164xfzq9/3g6MXPJg0UYiGycy6mG4a/80485c5cb45cff68df5f6f51ef8b7390/frontpage_table_2.jpg"
+    Redirect 301 "/Holzschmiede-Hamburg/Sitzschwebe_files/IMG_1295.jpg"        "https://images.ctfassets.net/nfxa164xfzq9/jQmtjCnJyEEYW4ASMwYWO/bb25a7d9f6dfc6f3b9be26732353c09a/02.05.2014_-_72_von_186.jpg"
+    Redirect 301 "/Holzschmiede-Hamburg/Puzzletisch_files/Katalog 070.jpg"     "https://images.ctfassets.net/nfxa164xfzq9/125vPFaJCY88YKK4EaosiU/05b8c29909e244b0d063f84722bf3ef8/02.05.2014_-_58_von_186.jpg"
+    Redirect 301 "/HH/Nusstopf_files/IMG_0125.jpg"                             "https://images.ctfassets.net/nfxa164xfzq9/6CCiOy8VvU8USm4soMc0wi/620710d19a43339c761fbb1b21976411/nusstopf_3.jpg"
+    Redirect 301 "/HH/Willkommen_files/IMG_1306.jpg"                           "https://images.ctfassets.net/nfxa164xfzq9/6bzCJzjrqMYSs6aA0qSMgW/e86bd2f46ac468c7edafc75809a8c601/schaukelstuhl_1.jpg"
+    Redirect 301 "/Holzschmiede-Hamburg/Zahnhocker-2_files/IMG_1333.jpg"       "https://images.ctfassets.net/nfxa164xfzq9/1X7OtM4j8sMiewUaSSiyy8/ba92b6dee8b6ddbdb0b6902a893f688f/zahnhocker_2.jpg"
+    Redirect 301 "/Holzschmiede-Hamburg/Sitzschwebe_files/IMG_1293.jpg"        "https://images.ctfassets.net/nfxa164xfzq9/npUfgEJGFio6Kg2csCmGU/4df54322a863a3fcbf3b4bab051a4315/02.05.2014_-_73_von_186.jpg"
+    Redirect 301 "/Holzschmiede-Hamburg/Schwingstuhl_files/Katalog 074.jpg"    "https://images.ctfassets.net/nfxa164xfzq9/7inIrFn8YwWAUkwwqYwk8c/47d7dc8316bf1bd4525b817ee9470ad9/02.05.2014_-_49_von_186.jpg"
+    Redirect 301 "/HH/Mooreiche_files/IMG_0102.jpg"                            "https://images.ctfassets.net/nfxa164xfzq9/5gPoYulHdS44Ewq26gy8Y4/68ffa1634a95a8e3a7219aa1f1cc8ddb/mooreiche.jpg"
+    Redirect 301 "/Holzschmiede-Hamburg/Walschlund_files/Katalog 100.jpg"      "https://images.ctfassets.net/nfxa164xfzq9/4UVQ279sKA2oIAOWQ64Aam/610672ddf0280bae24e2498af9551042/Katalog_100.jpg"
+    Redirect 301 "/Holzschmiede-Hamburg/Puzzletisch_files/Katalog 067.jpg"     "https://images.ctfassets.net/nfxa164xfzq9/3NPCmpN8K4oyGciKgmYO2Q/70e6f9da3f1fe37fa6fecf13d0cedb7d/02.05.2014_-_56_von_186.jpg"
+    Redirect 301 "/Holzschmiede-Hamburg/Puzzletisch_files/Katalog 069.jpg"     "https://images.ctfassets.net/nfxa164xfzq9/3jVrMd3D1me0KccIeY2GU6/5568d972315e62dffc11d460902e680f/02.05.2014_-_57_von_186.jpg"
+    Redirect 301 "/Holzschmiede-Hamburg/Wengetisch_files/IMG_0984.jpg"         "https://images.ctfassets.net/nfxa164xfzq9/2mPgAXhNuwscYci8AaMAKK/fcde92d16e8ffd405e39ef56223fb349/frontpage_table_3.jpg"
+    Redirect 301 "/Holzschmiede-Hamburg/Zahnhocker-1_files/IMG_0143.jpg"       "https://images.ctfassets.net/nfxa164xfzq9/55Avwrpk5i4aeGC8CKGaMO/2e5492858d2f5841804c6909994f99ab/zahnhocker_3.jpg"
+    Redirect 301 "/Holzschmiede-Hamburg/Zahnhocker-2_files/IMG_1337.jpg"       "https://images.ctfassets.net/nfxa164xfzq9/3B76IXEK8UsGqAq0EYK8Ke/487c963a24bf0589f3bb87ad7c9cf1b2/zahnhocker_4.jpg"    
+    Redirect 301 "/Holzschmiede-Hamburg/Zahnhocker-2_files/IMG_1332.jpg"       "https://images.ctfassets.net/nfxa164xfzq9/4om6McjRAkkGG0a480KMwO/2126cc424899990b6b929370344d21e6/zahnhocker_5.jpg"
+    Redirect 301 "/Holzschmiede-Hamburg/Zahnhocker-2_files/IMG_1327.jpg"       "https://images.ctfassets.net/nfxa164xfzq9/a6908gefokySUKKgAMYG0/81332f5719dfff8e56cd39197b00554c/zahnhocker_6.jpg"
+    Redirect 301 "/Holzschmiede-Hamburg/Sitzschwebe_files/IMG_1299.jpg"        "https://images.ctfassets.net/nfxa164xfzq9/z6TdH95mSci4a0wWUWUwO/67064521f30f5f2c984ef8079a054d2f/02.05.2014_-_74_von_186.jpg"
+    Redirect 301 "/Holzschmiede-Hamburg/Willkommen_files/IMG_1337.jpg"         "https://images.ctfassets.net/nfxa164xfzq9/3B76IXEK8UsGqAq0EYK8Ke/487c963a24bf0589f3bb87ad7c9cf1b2/zahnhocker_4.jpg"
+    Redirect 301 "/HH/CD-Stander_files/IMG_0095.jpg"                           "https://images.ctfassets.net/nfxa164xfzq9/3BaLs3qmBqgQygmI8gQGyg/c6bb3076e14511de749a33d97b285cdd/cd_staender_2.jpg"             
+</IfModule>
+

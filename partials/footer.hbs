@@ -1,0 +1,41 @@
+
+           <!-- 
+                DER FUSSBEREICH 
+    
+                replace with data pulled from contentful
+            -->
+            <div class="footer-info">
+                <section class="row text-center">
+                    <div class="columns small-12 medium-4">
+                        <h3>Adresse</h3>
+                        <p>{{ settings.company_name }}</p>
+                        <p>Inh. {{ settings.company_owner }} ({{settings.company_job_title}})<br>
+                        {{ settings.company_street }} <br>
+                        {{ settings.company_zip }} {{ settings.company_city }}</p>
+                    </div>
+                    <div class="columns small-12 medium-4">
+                        <h3>Kontakt</h3>
+                        <p><a href="mailto:{{ settings.company_mail }}" title="Schreiben Sie der Holzschmiede Hamburg eine Email">{{ settings.company_mail }}</a></p>
+                        <p><a href="Tel:{{ settings.company_phone }}" title="Rufen Sie die Holzschmiede Hamburg per Telefon an">{{ settings.company_phone }}</a></p>
+                    </div>
+                    <div class="columns small-12 medium-4">
+                        <h3>Links</h3>
+                        <p>
+                            <a href="/impressum.html" title="Impressum">Impressum</a>
+                        </p>
+                        <p>
+                            <a href="/kontakt.html" title="Konkatktieren Sie die Holzschmiede Hamburg">Kontaktformular</a>
+                        </p>
+                    </div>                     
+                </section>
+            </div>
+            <div class="footer-divider"></div>
+            <footer class="footer" role="contentinfo" itemscope itemtype="http://schema.org/WPFooter">
+                <section class="row column text-center">
+                    <p>Hamburger Wohnskulpturen seit {{ settings.company_founding_year }}</p>
+                </section> 
+            </footer>
+
+        </div>
+    </body>
+</html>

@@ -1,0 +1,68 @@
+{{> header 
+    title=title 
+    description=meta_description 
+    keywords=meta_keywords
+    schemaOrgPageType="ContactPage" }}
+
+    <!-- 
+        DER CONTENTBEREICH 
+    -->    
+    <main role="main" itemscope itemprop="mainContentOfPage">
+
+        <section class="page-section" itemscope itemtype="http://schema.org/WPHeader">
+            <div class="row column text-center">
+                <h1 class="tagline bb" itemprop="headline">Kontaktieren Sie mich</h1>
+            </div>
+            <div class="row column">
+                <div class="h1-divider"></div>
+            </div>
+        </section>
+
+        
+        <section class="page-section">
+            <div class="row column">
+                <p>{{intro}}</p>
+                <p>
+                    <span>
+                        &#9742; Telefon: <a href="Tel:{{settings.company_phone}}" title="Telefonieren Sie mit mir">{{settings.company_phone}}</a>
+                    </span>
+                </p>
+                <p>
+                    <span>
+                        &#128231; Email: <a href="mailto:{{settings.company_mail}}" title="Schreiben Sie mir eine Email">{{settings.company_mail}}</a>
+                    </span>
+                </p>   
+                <p>             
+                    {{outro}}
+                </p>
+            </div>
+        </section>
+
+        <section class="page-section">
+                <form action="https://holzschmiede-hamburg.de/kontakt/" method="POST">
+                    <div class="row">
+                        <div class="medium-6 columns">
+                            <label>Name <input placeholder="name" name="name" required="" aria-required="true" type="text"></label>
+                        </div>
+                        <div class="medium-6 columns">
+                            <label>Email <input placeholder="email" name="email" required="" aria-required="true" type="text"></label>
+                        </div>
+                    </div>
+                    <div class="row column">
+                        <label>Betreff <input placeholder="betreff" name="subject" required="" aria-required="true" type="text"></label>
+                    </div>
+                    <div class="row column">
+                        <label>Nachricht
+                            <textarea class="textarea-bigger" name="message" placeholder="Schreiben Sie ihre Nachricht hier" required="" aria-required="true"></textarea>
+                            <input aria-hidden="true" name="nicht-ausfuellen" type="hidden">
+                        </label>
+                    </div>
+                    <div class="row column text-right push-down">
+                        <input class="button large warning contact-button" value="Nachricht absenden" type="submit">
+                    </div>
+                </form>
+        </section>
+
+    </main>
+
+{{> footer}}

@@ -1,0 +1,38 @@
+{{> header 
+    title=title
+    description=meta_description
+    keywords=meta_keywords
+    schemaOrgPageType="CollectionPage" }}
+
+    <!-- 
+    DER CONTENTBEREICH 
+    -->    
+    <main role="main" itemscope itemprop="mainContentOfPage">
+
+        <section class="page-section" itemscope itemtype="http://schema.org/WPHeader">
+            <div class="row column text-center">
+                <h1 class="tagline bb" itemprop="headline">{{ title }}</h1>
+            </div>
+            <div class="row column">
+                <div class="h1-divider"></div>
+            </div>
+        </section>
+        
+        <section class="page-section" itemscope itemtype="http://schema.org/ImageGallery">
+            <div class="row small-up-2 medium-up-3 large-up-4 featured">
+                {{#each all_sculptures}}
+                    <figure class="column column-block" itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+                        <a href="{{ url }}" itemprop="contentUrl">
+                            <img src="/assets/thumbnails/{{pictures.[0]}}" 
+                                class="thumbnail" alt="{{meta_description}}" title="{{meta_description}}" itemprop="thumbnailUrl" />
+                        </a>
+                    </figure>                    
+                {{/each}}                               
+            </div>                  
+        </section>
+
+    </main>
+
+{{> footer }}
+
+

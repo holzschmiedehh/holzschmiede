@@ -1,0 +1,59 @@
+{{> header 
+    title=title 
+    description=meta_description 
+    keywords=meta_keywords }}
+
+    <!-- 
+        DER CONTENTBEREICH 
+    -->    
+    <main role="main" itemscope itemprop="mainContentOfPage">
+
+        <section class="page-section" itemscope itemtype="http://schema.org/WPHeader">
+            <div class="row column text-center">
+                <h1 class="tagline bb" itemprop="headline">Impressum</h1>
+            </div>
+            <div class="row column">
+                <div class=" h1-divider"></div>
+            </div>
+        </section>
+
+        <section class="page-section">
+            <div class="row column">
+                <h3>Angaben gemäß § 5 TMG:</h3>
+                <p>
+                    {{settings.company_owner}} <br>
+                    {{settings.company_name}} <br>
+                    {{settings.company_street}} <br>
+                    {{settings.company_zip}} {{settings.company_city}}
+                </p>
+                <h3>Kontakt:</h3>
+                <p>
+                    Telefon: {{settings.company_phone}} <br>
+                    Email: {{settings.company_mail}}
+                </p>
+                <h3>Umsatzsteuer-ID:</h3>
+                <p>Umsatzsteuer-Identifikationsnummer gemäß §27 a Umsatzsteuergesetz: {{settings.company_vat_number}}</p>
+            </div>                        
+        </section>
+
+        <section class="page-section">
+            <div class="row column">
+                <div class="line-heading"><h2>Haftungsausschluss</h2></div>
+            </div>
+            <div class="row column">
+                {{#marked disclaimer}}{{/marked}}  
+            </div>                  
+        </section>
+
+        <section class="page-section">
+            <div class="row column">
+                <div class="line-heading"><h2>Datenschutz</h2></div>
+            </div>
+            <div class="row column">
+                {{#marked data_safety}}{{/marked}} 
+            </div>                  
+        </section>
+
+    </main>
+
+{{> footer }}

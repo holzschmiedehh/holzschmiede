@@ -1,0 +1,62 @@
+
+# This workflow runs each time a change was made through NetlifyCMS, which builds + optimizes the site and at the end uploads it to the server
+
+name: Build Holzschmiede
+
+# Controls when the action will run. Triggers the workflow on push events for the main branch
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+      # Checks-out the repository under $GITHUB_WORKSPACE, so the job can access it
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # we want a container with Node.js 14
+      - name: Setup node 14
+        uses: actions/setup-node@v2
+        with:
+          node-version: '12'
+
+      # don't always download or even worse build (sharp.js!) the dependencies. cache them instead
+      - name: Cache npm dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: npm-${{ hashFiles('package-lock.json') }}
+          restore-keys: npm-
+
+      # install all dependencies (ci instead of install to take advantage of the lock file and speed things up)
+      - name: NPM install dependencies
+        run: npm ci
+
+      # build the site with metalsmith
+      - name: Build site
+        run: node index
+        env:
+          NODE_ENV: production
+          SFTP_SITE: ${{ secrets.SFTP_SITE }}
+          SFTP_PORT: ${{ secrets.SFTP_PORT }}
+          SFTP_USERNAME: ${{ secrets.SFTP_USERNAME }}
+          SFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
+
+      # deploy the generated site to the server
+      - name: Deploy to server with SFTP
+        run: node deploy
+        env:
+          SFTP_SITE: ${{ secrets.SFTP_SITE }}
+          SFTP_PORT: ${{ secrets.SFTP_PORT }}
+          SFTP_USERNAME: ${{ secrets.SFTP_USERNAME }}
+          SFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
+        #uses: SamKirkland/FTP-Deploy-Action@3.1.1
+        #with:
+        #  ftp-server: sftp://${{ secrets.SFTP_SITE }}
+        #  ftp-username: ${{ secrets.SFTP_USERNAME }}
+        #  ftp-password: ${{ secrets.SFTP_PASSWORD }}
+        #  local-dir: ./build/
+        #  git-ftp-args: --insecure

@@ -1,0 +1,61 @@
+{{> header 
+    title=title 
+    description=meta_description 
+    keywords=meta_keywords }}
+            <!-- 
+                DER CONTENTBEREICH 
+            -->    
+            <main role="main" itemscope itemprop="mainContentOfPage">
+    
+                <section class="page-section" itemscope itemtype="http://schema.org/WPHeader">
+                    <div class="row column text-center">
+                        <h1 class="tagline" itemprop="headline">{{title}}</h1>
+                    </div>
+                </section>
+
+                
+                <section class="page-section">
+                    <div class="row column">
+                            <h2 class="line-heading">{{teaser_header}}</h2>
+                    </div>
+                    <div class="row column">
+                            {{#marked teaser}}{{/marked}}
+                    </div>                    
+                    <div class="row small-up-2 medium-up-3 large-up-4 featured">
+                        {{#each resolved_linked_sculptures}}
+                            <div class="column column-block">
+                                <a href="{{ url }}" title="{{ meta_description }}">
+                                    <img src="/assets/thumbnails/{{ pictures.[0] }}" 
+                                        class="thumbnail {{#equal @index 3}} hide-for-medium-only {{/equal}}" 
+                                        alt=""
+                                        title="{{meta_description}}" />
+                                </a>
+                            </div>                
+                        {{/each}}
+                    </div>
+                    <div class="row column text-center">
+                        <a href="/wohnskulpturen.html" class="button warning large products-button" title="{{button_text}}">{{button_text}}</a>
+                    </div>
+                </section>
+
+                <section class="page-section">
+                    <div class="row column">
+                        <h2 class="line-heading">Die Holzschmiede Hamburg</h2>
+                    </div>
+                    <div class="row column">
+                        {{#marked intro}}{{/marked}}  
+                    </div>                   
+                </section>
+
+                <section class="page-section">
+                    <div class="row column">
+                        <h2 class="line-heading">{{extra_header}} <span class="hide-for-small-only">Hamburg</span></h2>
+                    </div>
+                    <div class="row column">
+                        {{#marked extra_text}}{{/marked}}    
+                    </div>                   
+                </section>
+
+            </main>
+
+{{> footer }}
