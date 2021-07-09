@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: holzschmiedehh/www # Path to your Github repository
+  repo: holzschmiedehh/holzschmiede # Path to your Github repository
   branch: main # Branch to update
   base_url: https://holzschmiede-hamburg.de
   auth_endpoint: /auth/public/auth
