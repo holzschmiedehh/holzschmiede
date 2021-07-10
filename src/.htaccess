@@ -76,6 +76,11 @@ Deny from env=block_bad_bots
     RewriteRule ^produkte/(.*)$ /wohnskulpturen/$1 [R=301,NC,L]
 
     #
+    # redirect /favicon.ico to /assets/favicon/favicon.ico so non html content, which usually just assumes /favicon.ico, get's the favicon as well instead of 404
+    #
+    Redirect 301 /favicon.ico     https://holzschmiede-hamburg.de/assets/favicon/favicon.ico
+
+    #
     # redirect all google search results to the new page so no page ranking is lost
     #
     Redirect 301 /produkte.html                                 https://holzschmiede-hamburg.de/wohnskulpturen.html
