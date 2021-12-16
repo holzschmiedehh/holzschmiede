@@ -7,7 +7,7 @@ meta_keywords:
   - Eiche
   - Couchtisch
   - Sofatisch
-description: Ein asymetrischer Rundtisch aus Holz
+description: Ein asymetrischer Couchtisch aus Eiche
 pictures:
   - images/Tisch_Holplatte_1.jpg
   - images/Tisch_Holplatte_2.jpg
