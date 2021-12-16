@@ -1,10 +1,16 @@
 ---
-name: Birkenfuß
-meta_description: "Ein Birkenfuß, aus einem gefällten Straßenbaum herausgearbeitet Höhe: 85cm"
+name: Birkenstammfuß
+meta_description: "Hohles Birkenstammteil aus einem gefällten Straßenbaum
+  herausgearbeitet Höhe: 85cm"
 meta_keywords:
   - Birke
   - Tisch
-description: "Ein Birkenfuß, aus einem gefällten Straßenbaum herausgearbeitet Höhe: 85cm"
+  - Birkenstamm
+  - Sofatisch
+  - Beistelltisch
+description: >
+  Hohles Birkenstammteil aus einem gefällten Straßenbaum herausgearbeitet Höhe:
+  85cm
 pictures:
   - images/Katalog_114.jpg
   - images/Katalog_112.jpg
