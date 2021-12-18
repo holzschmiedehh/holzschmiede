@@ -14,5 +14,6 @@ description: "Handgefertigt aus den Messer- und Schälresten bei der
 pictures:
   - images/schaukelliege_1.jpg
   - images/img_0926.jpg
+  - images/a-1-1-.jpg
 layout: wohnskulptur.hbs
 ---
