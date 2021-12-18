@@ -14,6 +14,5 @@ pictures:
   - images/img_0588.jpg
   - images/img_0591.jpg
   - images/holzstamm_spg.jpg
-  - images/holstamm.jpg
 layout: wohnskulptur.hbs
 ---
