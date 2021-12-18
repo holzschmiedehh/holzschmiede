@@ -1,5 +1,5 @@
 ---
-name: Stehtisch "bunte Mooreiche"
+name: "Stehtisch ,bunte Mooreiche‘ "
 meta_description: Der Stehtisch wurde aus einer Mooreiche erstellt. Die
   Tischfläche ist zum Teil mit bunten Epoxid-Intarsien ausgefüllt.
 meta_keywords:
