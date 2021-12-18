@@ -13,8 +13,6 @@ pictures:
   - images/img_0583.jpg
   - images/img_0588.jpg
   - images/img_0591.jpg
-  - images/img_0611.jpg
-  - images/img_0611.jpg
-  - images/img_0611_1.jpg
+  - images/holstamm.jpg
 layout: wohnskulptur.hbs
 ---
