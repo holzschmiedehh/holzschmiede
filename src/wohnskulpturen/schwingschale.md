@@ -1,12 +1,16 @@
 ---
-name: Schwingschale
-meta_description: Eine handgefertigte Schwingschale zum sitzen.
+name: Schwingschale ,Wenge`
+meta_description: Eine handgefertigte Schwingschale aus Wenge auf Federstahl zum sitzen.
 meta_keywords:
   - Schwingschale
-description: Eine handgefertigte Schwingschale zum sitzen.
+  - Wengenstuhl
+  - Federstahl Stuhl
+  - Schwingstuhl
+description: |+
+  Eine handgefertigte Schwingschale aus Wenge auf Federstahl zum sitzen.
+
 pictures:
-  - images/schwingschale_2.jpg
-  - images/schwingschale_1.jpg
+  - images/wlk_0221.jpg
   - images/schwingschale_3.jpg
 layout: wohnskulptur.hbs
 ---
