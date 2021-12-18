@@ -7,8 +7,8 @@ meta_keywords:
 description: Der Kern des Sapeli-Stammes hat sich durch Trocknung von den
   äußeren Jahresringen getrennt - daraus entstanden diese Figuren.
 pictures:
+  - images/Katalog_082.jpg
   - images/Katalog_079.jpg
   - images/Katalog_081.jpg
-  - images/Katalog_082.jpg
 layout: wohnskulptur.hbs
 ---
