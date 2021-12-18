@@ -1,9 +1,13 @@
 ---
 name: Garderobenständer
-meta_description: Ein Garderobenständer mit einer spiralförmigen Halterung
+meta_description: Ein Garderobenständer, welcher sich nach oben spiralförmig
+  öffnet. Das Metall ist pulverbeschichtet.
 meta_keywords:
   - Spiralförmig
-description: Ein Garderobenständer mit einer spiralförmigen Halterung
+  - Garderobenständer
+  - pulverbeschichtet
+description: Ein Garderobenständer, welcher sich nach oben spiralförmig öffnet.
+  Das Metall ist pulverbeschichtet.
 pictures:
   - images/Katalog_130.jpg
   - images/Katalog_131.jpg
