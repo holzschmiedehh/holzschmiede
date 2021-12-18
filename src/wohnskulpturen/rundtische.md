@@ -1,15 +1,16 @@
 ---
-name: Rundtische
-meta_description: Aus massivem Holz gedrehte Couch- und Stehtische
+name: Couchtisch ,Buche‘
+meta_description: Der Couchtisch wurde aus massivem Buchenholz gedreht.
+  Verschiedene Größen sind möglich.
 meta_keywords:
   - Massivholz
   - Rundtisch
-description: Aus massivem Holz gedrehte Couch- und Stehtische
+  - Buche
+  - gedrechselter Tischfuß
+description: Der Couchtisch wurde aus massivem Buchenholz gedreht. Verschiedene
+  Größen sind möglich.
 pictures:
-  - images/Katalog_120.jpg
-  - images/Katalog_122.jpg
-  - images/Katalog_123.jpg
-  - images/Katalog_124.jpg
-  - images/Katalog_125.jpg
+  - images/img_1115.jpg
+  - images/02.05.2014-30-von-186.jpg
 layout: wohnskulptur.hbs
 ---
