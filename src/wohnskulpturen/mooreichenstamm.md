@@ -22,5 +22,6 @@ description: >+
 pictures:
   - images/img_0944.jpg
   - images/img_0943.jpg
+  - images/mooreiche-richtig.jpg
 layout: wohnskulptur.hbs
 ---
