@@ -16,8 +16,12 @@ description: >+
 
   offensichtlich nicht ausgereicht, um auch die beiden Stammkerne vollständig einzuschwärzen.
 
+
+  Unten der noch zu bearbeitende Mooreichenstamm.
+
 pictures:
   - images/img_0944.jpg
   - images/img_0943.jpg
+  - images/img_0015.jpg
 layout: wohnskulptur.hbs
 ---
