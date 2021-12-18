@@ -1,5 +1,5 @@
 ---
-name: Asymetrischer Couchtisch ,Wengel‘
+name: Asymetrischer Couchtisch ,Wenge‘
 meta_description: "Der asymetrische Couchtisch wurde aus dem afrikanischen Holz
   Wenge gefertigt. "
 meta_keywords:
