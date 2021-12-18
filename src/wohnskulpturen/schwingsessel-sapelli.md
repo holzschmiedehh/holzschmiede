@@ -15,6 +15,6 @@ pictures:
   - images/img_1078.jpg
   - images/img_0534.jpg
   - images/img_0525.jpg
-  - images/img_0536.jpg
+  - images/schwingstuhl-1.jpg
 layout: wohnskulptur.hbs
 ---
