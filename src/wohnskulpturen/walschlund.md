@@ -9,6 +9,6 @@ pictures:
   - images/Katalog102.jpg
   - images/Katalog_101.jpg
   - images/Katalog_103.jpg
-  - images/img_0599.jpg
+  - images/wal-.jpg
 layout: wohnskulptur.hbs
 ---
