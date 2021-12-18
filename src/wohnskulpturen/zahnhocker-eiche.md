@@ -15,7 +15,7 @@ description: >+
 
 
 pictures:
-  - images/img_1114.jpg
+  - images/zahnhocker.jpg
   - images/zahnhocker_4.jpg
   - images/img_1087.jpg
   - images/zahnhocker_6.jpg
