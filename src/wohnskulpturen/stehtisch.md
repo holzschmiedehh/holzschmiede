@@ -1,5 +1,5 @@
 ---
-name: Stehtisch "Douglas"
+name: "Stehtisch ,Douglas‘ "
 meta_description: "Die Tischfläche des Stehtisches wurde aus einem
   Douglasienstammteil gefertigt und mit Epoxidharz versiegelt. Das Unterteil
   kann aus verschiedenen Füßen bestehen, zum Beispiel aus Metall,
