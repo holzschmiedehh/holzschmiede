@@ -1,5 +1,5 @@
 ---
-name: Zahnhocker ,Eiche`
+name: Zahnhocker ,rustikal`
 meta_description: Zahnhocker, gefertigt aus alten Eichen- Balken, die auch ihr
   zweites Leben als Scheunenbalken schon hinter sich haben.
 meta_keywords:
