@@ -15,5 +15,6 @@ pictures:
   - images/img_0591.jpg
   - images/img_0611.jpg
   - images/img_0611.jpg
+  - images/img_0611_1.jpg
 layout: wohnskulptur.hbs
 ---
