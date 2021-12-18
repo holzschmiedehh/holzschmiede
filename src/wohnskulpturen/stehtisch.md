@@ -1,17 +1,17 @@
 ---
-name: Stehtisch
-meta_description: Ein Stehtisch bestehend aus einer mit Epoxidharz versiegelten
-  Stammscheibe einer Douglasie, die von einem Metalfuß getragen wird.
+name: Stehtisch "Douglas"
+meta_description: Die Tischfläche des Stehtisches wurde aus einem
+  Douglasienstammteil gefertigt und mit Epoxidharz versiegelt. Der Fuß besteht
+  aus pulverbeschichtetem Metall.
 meta_keywords:
   - Douglasie
   - Stehtisch
-  - Metalfuß
+  - Metallfuß
   - Epoxid
-description: Ein Stehtisch bestehend aus einer mit Epoxidharz versiegelten
-  Stammscheibe einer Douglasie, die von einem Metalfuß getragen wird.
+description: Die Tischfläche des Stehtisches wurde aus einem Douglasienstammteil
+  gefertigt und mit Epoxidharz versiegelt. Der Fuß besteht aus
+  pulverbeschichtetem Metall.
 pictures:
-  - images/Stehtisch1.jpg
-  - images/Stehtisch2.jpg
   - images/Stehtisch3.jpg
   - images/Stehtisch4.jpg
   - images/Stehtisch5.jpg
