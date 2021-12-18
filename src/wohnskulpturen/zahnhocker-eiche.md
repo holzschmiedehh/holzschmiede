@@ -1,12 +1,16 @@
 ---
 name: Zahnhocker ,rustikal`
-meta_description: Zahnhocker, gefertigt aus alten Eichen- Balken, die auch ihr
-  zweites Leben als Scheunenbalken schon hinter sich haben.
+meta_description: Die Zahnhocker entsprechen ein wenig der natürlichen Form
+  eines Backenzahnes. Gefertigt aus alten Eichen- Balken, die auch ihr zweites
+  Leben als Scheunenbalken schon hinter sich haben - Zeit und Holzwürmer haben
+  ihre Spuren hinterlassen.
 meta_keywords:
   - Zahnhocker
 description: >+
-  Zahnhocker, gefertigt aus alten Eichen- Balken, die auch ihr zweites Leben als
-  Scheunenbalken schon hinter sich haben.
+  Die Zahnhocker entsprechen ein wenig der natürlichen Form eines Backenzahnes.
+  Gefertigt aus alten Eichen- Balken, die auch ihr zweites Leben als
+  Scheunenbalken schon hinter sich haben - Zeit und Holzwürmer haben ihre Spuren
+  hinterlassen.
 
 
 
