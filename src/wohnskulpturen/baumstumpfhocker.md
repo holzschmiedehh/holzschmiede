@@ -11,8 +11,8 @@ pictures:
   - images/5BDE1EF3-C1E2-494C-A886-57DD52A7259C.jpeg
   - images/img_0466.jpg
   - images/holzstamm-1.jpg
-  - images/img_0588.jpg
-  - images/img_0591.jpg
-  - images/holzstamm_spg.jpg
+  - images/holzstamm-2.jpg
+  - images/holzstamm-3.jpg
+  - images/holzstamm-4.jpg
 layout: wohnskulptur.hbs
 ---
