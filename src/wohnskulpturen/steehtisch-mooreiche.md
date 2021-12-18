@@ -1,16 +1,18 @@
 ---
-name: Steehtisch Mooreiche
-meta_description: Stehtisch aus Mooreiche mit Epoxid-Intarsien
+name: Stehtisch "bunte Mooreiche"
+meta_description: Der Stehtisch wurde aus einer Mooreiche erstellt. Die
+  Tischfläche ist zum Teil mit bunten Epoxid-Intarsien ausgefüllt.
 meta_keywords:
   - Stehtisch
   - Mooreiche
   - Epoxid
   - Intarsien
-description: Stehtisch aus Mooreiche mit Epoxid-Intarsien
+  - bunte Intarsien
+description: Der Stehtisch wurde aus einer Mooreiche erstellt. Die Tischfläche
+  ist zum Teil mit bunten Epoxid-Intarsien ausgefüllt.
 pictures:
   - images/34A12727-17D2-424F-B3E4-20F9C1D7E750.jpeg
-  - images/ED502246-1FAB-4661-85AE-7013C499A300.jpeg
-  - images/IMG_6976.JPG
-  - images/IMG_6979.JPG
+  - images/img_1076.jpg
+  - images/img_1074.jpg
 layout: wohnskulptur.hbs
 ---
