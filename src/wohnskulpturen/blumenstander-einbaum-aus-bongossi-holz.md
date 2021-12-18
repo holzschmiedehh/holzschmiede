@@ -18,5 +18,6 @@ description: Eine Brücke über einen Bach wurde in HH-Wilhelmsburg im Zuge der
   abtransportieren konnten.
 pictures:
   - images/img_1094.jpg
+  - images/img_0987.jpg
 layout: wohnskulptur.hbs
 ---
