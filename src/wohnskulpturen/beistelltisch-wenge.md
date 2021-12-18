@@ -13,6 +13,6 @@ description: |+
 
 pictures:
   - images/img_0856.jpg
-  - images/img_0857.jpg
+  - images/stehtisch-wenge.jpg
 layout: wohnskulptur.hbs
 ---
