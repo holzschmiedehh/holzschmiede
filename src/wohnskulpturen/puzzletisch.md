@@ -1,12 +1,13 @@
 ---
 name: Puzzletisch
-meta_description: Vierteiliges Lindenholzunterteil. Die Höhe beträgt 50cm. Wie
-  ein Puzzle sind die Teile ineinander verwoben.
+meta_description: "Aus einem 800 Jahre alten Linden-Stamm gefertigt: Wie ein
+  Puzzle sind die 4 Teile ineinander verwoben. Die Höhe beträgt 50cm. "
 meta_keywords:
   - Lindenholz
   - Puzzle
-description: Vierteiliges Lindenholzunterteil. Die Höhe beträgt 50cm. Wie ein
-  Puzzle sind die Teile ineinander verwoben.
+description: |-
+  Aus einem 800 Jahre alten Linden-Stamm gefertigt: Wie
+  ein Puzzle sind die 4 Teile ineinander verwoben. Die Höhe beträgt 50cm. 
 pictures:
   - images/D8365290-935A-451C-918A-ED9DF908DCE1.jpeg
   - images/02.05.2014_-_56_von_186.jpg
