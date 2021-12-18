@@ -4,7 +4,7 @@ meta_description: Eine Obstschüssel, gefertigt aus Multiplex- und Sapelli-Holzs
 meta_keywords:
   - Obstschüssel Holz
   - Sapelli-Schüssel
-description: Eine Obstschüssel, gefertigt aus Multiplex- und Sapeli-Holzschichten
+description: Eine Obstschüssel, gefertigt aus Multiplex- und Sapelli-Holzschichten
 pictures:
   - images/img_0494.jpg
 layout: wohnskulptur.hbs
