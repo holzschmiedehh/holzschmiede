@@ -1,11 +1,11 @@
 ---
-name: Der Dreirat
-meta_description: Der "Dreirat" ist ein dreiteiliges Couchtischunterteil aus
+name: Triuvirat
+meta_description: '"Triumvirat" ist ein dreiteiliges Couchtischunterteil aus
   afrikanischer Wenge. Der Stamm lag bei einem Holzhändler in Hamburg in Form
   eines "Einbaumes". Das heißt durch die Trocknung hatte sich das Kernholz
   gelöst. Die Teile wurden schräg abgeschnitten, so dass sie sich, kreisförmig
   aufgestellt, ein wenig nach innen neigen. Die Schnittfläche ist sichelförmig
-  gestaltet.
+  gestaltet.'
 meta_keywords:
   - Wenge
   - Sichelförmig
@@ -13,13 +13,15 @@ meta_keywords:
   - Couchtisch
   - Sofatisch
   - Einbaum
-description: Der "Dreirat" ist ein dreiteiliges Couchtischunterteil aus
+description: '"Triumvirat" ist ein dreiteiliges Couchtischunterteil aus
   afrikanischer Wenge. Der Stamm lag bei einem Holzhändler in Hamburg in Form
   eines "Einbaumes". Das heißt durch die Trocknung hatte sich das Kernholz
   gelöst. Die Teile wurden schräg abgeschnitten, so dass sie sich, kreisförmig
   aufgestellt, ein wenig nach innen neigen. Die Schnittfläche ist sichelförmig
-  gestaltet.
+  gestaltet.'
 pictures:
+  - images/img_1099.jpg
+  - images/img_1098.jpg
   - images/Katalog_111.jpg
   - images/Katalog_110.jpg
   - images/Katalog_108.jpg
