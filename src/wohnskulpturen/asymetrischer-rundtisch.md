@@ -1,5 +1,5 @@
 ---
-name: Asymetrischer Couchtisch
+name: Asymetrischer Couchtisch ,Eiche‘
 meta_description: Ein asymetrischer Couchtisch aus Eiche
 meta_keywords:
   - Rundtisch
