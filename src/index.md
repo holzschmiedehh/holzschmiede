@@ -25,8 +25,8 @@ teaser: Ein Bild sagt mehr als tausend Worte! Daher können Sie sich hier ein
 linked_sculptures:
   - baumstumpfhocker
   - beistelltisch-esche
-  - nusstopf
   - asymetrischer-rundtisch
+  - mobiusring
 button_text: Alle Skulpturen
 extra_header: Wohnskulpturen aus der Holzschmiede
 extra_text: >-
