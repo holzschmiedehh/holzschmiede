@@ -23,10 +23,10 @@ teaser: Ein Bild sagt mehr als tausend Worte! Daher können Sie sich hier ein
   der Bilder gelangen Sie zu der jeweiligen Wohnskulptur. Alternativ gelangen
   Sie per Klick auf "Alle Skulpturen" zur Gallerie mit allen meinen Arbeiten.
 linked_sculptures:
-  - baumstumpfhocker
   - asymetrischer-rundtisch
   - mobiusring
   - beistelltisch-esskastanie
+  - schwingstuhl
 button_text: Alle Skulpturen
 extra_header: Wohnskulpturen aus der Holzschmiede
 extra_text: >-
