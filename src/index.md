@@ -26,7 +26,7 @@ linked_sculptures:
   - baumstumpfhocker
   - beistelltisch-esche
   - nusstopf
-  - schwingstuhl-2
+  - asymetrischer-rundtisch
 button_text: Alle Skulpturen
 extra_header: Wohnskulpturen aus der Holzschmiede
 extra_text: >-
