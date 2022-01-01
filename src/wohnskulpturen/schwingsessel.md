@@ -9,9 +9,10 @@ meta_keywords:
   - Federstahl
   - Schwingsessel
 description: >+
-  Ein körpergerecht geformter Schwingsessel aus Eiche dessen "Augen" aus
+  Ein körpergerecht geformter Schwingsessel aus Eiche, dessen "Augen" aus
   Multiplex-Holz gefertigt sind. Gehalten wird der Sessel durch Federstähle, die
-  ein "schwebendes Sitzen" ermöglichen.
+  ein "schwebendes Sitzen" ermöglichen. Hier sind zwei verschiedene Varianten
+  abgebildet.
 
 
 pictures:
@@ -20,5 +21,6 @@ pictures:
   - images/Sessel2.jpg
   - images/Sessel4.jpg
   - images/Sessel5.jpg
+  - images/img_1049.jpg
 layout: wohnskulptur.hbs
 ---
