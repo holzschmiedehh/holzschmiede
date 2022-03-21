@@ -1,9 +1,15 @@
 ---
 name: Apfelbaum ,Walschlund`
-meta_description: Das Maul eines Nordwales ist ein Apfelbaum, der innen marode war.
+meta_description: Diese Skulptur wurde aus dem Stamm eines Apfelbaumes
+  gefertigt, der innen marode war. Ich assoziiere das Maul eines Wales mit
+  diesem Stück. Je nach Wunsch kann er als Tischfuß mit zum Beispiel einer
+  Glasplatte genutzt werden oder als einzel stehende Skulptur.
 meta_keywords:
   - Apfelbaum
-description: Das Maul dieses Wales ist ein Apfelbaum, der innen marode war.
+description: Diese Skulptur wurde aus dem Stamm eines Apfelbaumes gefertigt, der
+  innen marode war. Ich assoziiere das Maul eines Wales mit diesem Stück. Je
+  nach Wunsch kann er als Tischfuß mit zum Beispiel einer Glasplatte genutzt
+  werden oder als einzel stehende Skulptur.
 pictures:
   - images/Katalog_100.jpg
   - images/Katalog102.jpg
